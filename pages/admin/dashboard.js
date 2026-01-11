@@ -4,7 +4,7 @@ import Head from 'next/head';
 export default function AdminDashboard() {
   const [apps, setApps] = useState([]);
   const [broadcastMsg, setBroadcastMsg] = useState('');
-  const [newAccount, setNewAccount] = useState({ appId: '',  '', note: '' });
+  const [newAccount, setNewAccount] = useState({ appId: '', data: '', note: '' }); // Fix typo: data bukan ""
 
   const handleAddAccount = async () => {
     const res = await fetch('/api/addAccount', {
@@ -54,7 +54,7 @@ export default function AdminDashboard() {
           type="text"
           placeholder="Data Akun"
           value={newAccount.data}
-          onChange={(e) => setNewAccount({...newAccount,  e.target.value})}
+          onChange={(e) => setNewAccount({...newAccount, data: e.target.value})} // Fixed
         />
         <input
           type="text"
